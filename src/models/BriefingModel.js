@@ -4,11 +4,9 @@ const connection = require('../../connection');
 class Briefing extends Model {
     constructor(body) {
       super();
-      this.body = body;
+      this.dataValues = body;//padrão do sequelize
       this.errors = [];
       this.briefing = null;
-
-      console.log(JSON.stringify(this))
     }
   
     async editar(id) {
@@ -24,26 +22,26 @@ class Briefing extends Model {
   
       if (this.errors.length > 0) return;
       //console.log(this.body);
-      this.briefing = await Briefing.create(this.body);
+      this.briefing = await Briefing.create(this.dataValues);
     }
   
     valida() {
         this.cleanUp();
   
       // Validação
-      if (!this.body.titulo) this.errors.push('Titulo é um campo obrigatório');
+      if (!this.dataValues.titulo) this.errors.push('Titulo é um campo obrigatório');
     }
   
     cleanUp() {
-      for (const key in this.body) {
-        if (typeof this.body[key] !== 'string') {
-          this.body[key] = '';
+      for (const key in this.dataValues) {
+        if (typeof this.dataValues[key] !== 'string') {
+          this.dataValues[key] = '';
         }
       }
   
-      this.body = {
-        titulo: this.body.titulo,
-        assunto: this.body.assunto
+      this.dataValues = {
+        titulo: this.dataValues.titulo,
+        assunto: this.dataValues.assunto
       };
     }
   
