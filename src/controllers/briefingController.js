@@ -1,6 +1,13 @@
 const Briefing = require('../models/BriefingModel');
 
-exports.index = (req, res) => {
+exports.index = async (req, res) => {
+    const briefings = await Briefing.buscaBriefings();
+
+    res.render('index', { briefings });
+};
+
+exports.criar = (req, res) => {
+
     res.render('briefing');
 };
 

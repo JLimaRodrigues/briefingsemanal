@@ -13,13 +13,9 @@ const sessionOptions = require('./sessionOptions');
 //configurações do BD
 connection.authenticate()
   .then(() => {
-    //console.log('Conectei ao banco de dados');
-
-    // Adiciona a sincronização do banco de dados após a autenticação
     return connection.sync();
   })
   .then(() => {
-    //console.log('Tabelas sincronizadas com o banco de dados');
     app.emit('pronto');
   })
   .catch((e) => {

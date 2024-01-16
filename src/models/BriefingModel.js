@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const connection = require('../../connection');
 
 //define BriefingSchema
-const BrifiengSchema = sequelize.define('usuarios',  {
+const BriefingSchema = connection.define('briefings',  {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -16,10 +16,6 @@ const BrifiengSchema = sequelize.define('usuarios',  {
       type: DataTypes.STRING,
       allowNull: true,
       defaultValue: ''
-    },
-    criadoEm: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW
     }
 });
 
@@ -81,14 +77,12 @@ class Briefing {
     }
   
     static async buscaBriefings() {
-      //console.log('Chamando buscaBriefings...');
       try {
           const briefings = await BriefingSchema.findAll({
-              order: [['criadoEm', 'DESC']]
+              order: [['createdAt', 'DESC']]
           });
           return briefings;
       } catch (error) {
-          //console.error('Erro em buscaBriefings:', error);
           throw error;
       }
   }
