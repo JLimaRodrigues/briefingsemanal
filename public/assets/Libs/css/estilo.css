@@ -1,0 +1,22 @@
+body {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    padding: 20px;
+}
+
+#codeInput {
+    background-color: #2d2d2d;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    resize: none;
+    font-family: 'Consolas', 'Courier New', monospace;
+}
+
+#output {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #333333;
+    color: #ffffff;
+}

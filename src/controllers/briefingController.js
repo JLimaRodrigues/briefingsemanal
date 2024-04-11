@@ -34,3 +34,24 @@ exports.registrar = async (req, res) => {
         res.render('404');
     }
 };
+
+exports.editar = async (req, res) => {
+    if(!req.params.id) return res.render('404');
+
+    try {
+        const briefing = await Briefing.buscaPorId(req.params.id);
+
+        if(briefing){
+            res.render('editarBriefing', { briefing });
+        } else {
+            req.session.save(() => res.redirect('/briefing'));
+            return;
+        }
+        return res.render()
+    } catch (e) {
+        //escrever o erro
+        console.log(e);
+        req.session.save(() => res.redirect('/briefing'));
+        return;
+    }
+}

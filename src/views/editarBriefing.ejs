@@ -7,22 +7,22 @@
 
         <div class="col-lg-8 my-3">
           <h1 class="text-center">Briefing</h1>
-          <p class="text-center lead">Crie um briefing abaixo.</p>
+          <p class="text-center lead">Edite seu briefing abaixo.</p>
 
           <%- include('includes/messages'); %>
 
-          <form action="/briefing/registrar" method="POST">
+          <form action="/briefing/atualizar/<%= briefing.id %>" method="POST">
             <div class="form-group">
               <label for="titulo">Titulo</label>
-              <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Semana tal texto alguma coisa">
+              <input type="text" class="form-control" id="titulo" name="titulo" value="<%= briefing.titulo %>" placeholder="Semana tal texto alguma coisa">
             </div>
             
             <div class="form-group">
               <label for="assunto">Assunto</label>
-              <textarea class="form-control" id="assunto" name="assunto" rows="3"></textarea>
+              <textarea class="form-control" id="assunto" name="assunto" rows="3"><%= briefing.assunto %></textarea>
             </div>
 
-            <button class="btn btn-success">Cadastrar</button>
+            <button class="btn btn-success">Atualizar</button>
           </form>
         </div>
 
